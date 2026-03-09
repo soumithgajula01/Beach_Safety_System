@@ -1,0 +1,7 @@
+.venv
+runs
+test
+train
+valid
+yolo11n.pt
+yolo8x.pt
