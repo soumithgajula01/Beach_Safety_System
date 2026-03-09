@@ -1,0 +1,4 @@
+mAP@0.5: 0.843
+Precision: 0.832
+Recall: 0.806
+Overall Accuracy: 82.70%

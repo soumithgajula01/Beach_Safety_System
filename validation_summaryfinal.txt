@@ -1,0 +1,12 @@
+===== VALIDATION SUMMARY =====
+mAP@0.5: 0.843
+Precision: 0.832
+Recall: 0.806
+F1 Score: 0.819
+
+TP: 1078, FP: 19, FN: 15, TN: 677
+False Positive Rate: 0.027
+False Negative Rate: 0.014
+
+Inference Time: 84.07 ms per image
+FPS (speed): 11.90 FPS

@@ -1,0 +1,8 @@
+train: /home/user/Desktop/Soumith/project/train/images
+val: /home/user/Desktop/Soumith/project/valid/images
+test: /home/user/Desktop/Soumith/project/test/images
+
+nc: 2
+names:
+  - drowning_person
+  - person
