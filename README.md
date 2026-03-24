@@ -1,60 +1,126 @@
-﻿# Beach_Safety_System
-# 🌊 Beach Safety AI System (Drowning Detection using Deep Learning - YOLOv8)
+# 🌊 AI-Powered Beach Safety System  
+### (Drowning Detection using Deep Learning - YOLOv8)
 
-An AI-powered computer vision system designed to detect drowning persons in real-time using a deep learning-based object detection model (YOLOv8).  
-This project focuses on improving beach safety by automatically identifying dangerous situations and enabling faster rescue response.
+An AI-based beach safety system designed to detect drowning persons in real-time using **YOLOv8 (a CNN-based object detection model)**.  
+This project focuses on improving beach safety by assisting lifeguards with automated monitoring and alert systems.
 
 ---
 
 ## 🧠 Project Overview
 
-This system uses a **Convolutional Neural Network (CNN)-based object detection model** from the YOLO (You Only Look Once) family to detect:
+Drowning is one of the leading causes of accidental death worldwide, with over 300,000 deaths annually. Traditional monitoring systems rely heavily on lifeguards, which becomes ineffective due to:
 
-- 🆘 Drowning persons
-- 🧍 Normal persons
+- Large crowd sizes  
+- Limited human attention  
+- Night-time visibility issues  
 
-The model processes images or video frames and predicts bounding boxes with class labels in real time.
+This project proposes an **AI-based automated surveillance system** that detects drowning behavior using computer vision techniques.
 
 ---
 
-## 🤖 Model & Neural Network Details
+## 🤖 Model & Neural Network Used
 
-- Model Used: **YOLOv8x (Ultralytics)**
-- Type: **Deep Learning Object Detection Model**
-- Architecture: **CNN-based (Convolutional Neural Network)**
-- Framework: **PyTorch + Ultralytics**
+- Model: **YOLOv8x (Ultralytics)**
+- Type: **Convolutional Neural Network (CNN)**
+- Framework: **PyTorch**
 
-### 🔍 How YOLOv8 Works (Simplified)
+### 🔍 How the Model Works
 
-- Input image is passed through convolutional layers (feature extraction)
-- Backbone extracts spatial features
-- Neck combines multi-scale features
-- Head predicts:
+- Input image/video is processed by CNN layers
+- Features like shape, motion, and posture are extracted
+- Model predicts:
   - Bounding boxes
-  - Class probabilities
+  - Class labels (`drowning_person`, `person`)
   - Confidence scores
 
-✔ Single-stage detector → Fast + Real-time  
-✔ High accuracy with optimized training
+✔ Real-time detection  
+✔ High accuracy  
+✔ Suitable for safety-critical applications  
+
+---
+
+## ⚠️ Important Clarification
+
+> 🔴 **Note:**  
+> This implementation focuses on **YOLO-based drowning detection only**.
+
+The following components are part of the **research concept** but **NOT implemented in this project**:
+
+- ❌ AELIS system (Aquatic Environment Lifesaving Integrated System)  
+- ❌ Thermal camera integration  
+
+👉 These are included as **proposed enhancements based on research study** :contentReference[oaicite:0]{index=0}  
+
+---
+
+## 📚 Conceptual Extensions (From Research)
+
+### 🌙 Thermal Cameras (Concept Only)
+
+Thermal cameras can:
+- Detect human body heat
+- Work in night / fog / low visibility
+
+👉 In research, system switches:
+- Day → RGB camera  
+- Night → Thermal camera  
+
+✔ Enables 24/7 monitoring  
+❌ Not implemented in this project  
+
+---
+
+### 🧬 AELIS Technology (Concept Only)
+
+AELIS is a conceptual integrated system that:
+
+- Combines cameras, AI models, and alert systems  
+- Detects boundary crossing and drowning  
+- Sends alerts (SMS, alarms) to lifeguards  
+- Uses GIS for multi-location tracking  
+
+👉 In this project:
+- Only the **AI detection (YOLO)** part is implemented  
+- AELIS is discussed as a **future integration framework**
+
+---
+
+## ⚙️ Methodology (Implemented)
+
+1. Input images/videos are provided to the system  
+2. YOLO model processes frames  
+3. Detects:
+   - Drowning person
+   - Normal person  
+4. Bounding boxes are generated  
+5. Detection results are saved/output  
 
 ---
 
 ## 🚀 Features
 
-- Deep Learning-based detection (CNN)
+- Deep learning-based detection (CNN)
 - Real-time object detection using YOLOv8
-- Detects:
-  - `drowning_person`
-  - `person`
-- Automatic label validation and cleaning
+- Detects drowning behavior from images/videos
 - High-performance training (target ≥ 90% accuracy)
-- Advanced evaluation metrics:
+- Advanced validation metrics:
   - mAP@0.5
-  - Precision & Recall
+  - Precision
+  - Recall
   - F1 Score
-  - False Positive Rate (FPR)
-  - False Negative Rate (FNR)
-  - FPS (Inference speed)
+  - FPR / FNR
+  - FPS
+
+---
+
+## 📊 Performance
+
+- Precision: ~0.84  
+- Recall: ~0.85  
+- F1 Score: ~0.85  
+- False Positive Rate: 0.027  
+- False Negative Rate: 0.014  
+- FPS: ~11.9  
 
 ---
 
@@ -63,238 +129,72 @@ The model processes images or video frames and predicts bounding boxes with clas
 ```
 project/
 │
-├── train/              # Dataset (not included)
-├── valid/              # Dataset (not included)
-├── test/               # Dataset (not included)
+├── train/ (not included)
+├── valid/ (not included)
+├── test/  (not included)
 │
-├── data.yaml           # Dataset configuration
-├── data.yaml.py        # YAML generator
+├── data.yaml
+├── clean_label.py
+├── train_model.py
+├── validate_model.py
+├── validation_final.py
+├── predict_model.py
 │
-├── clean_label.py      # Label validation & cleaning
-├── train_model.py      # Model training script
-├── validate_model.py   # Basic validation
-├── validation_final.py # Advanced validation (FPR, FNR, FPS)
-├── predict_model.py    # Inference script
-│
-└── runs/               # Output (auto-generated)
+└── runs/
 ```
 
 ---
 
-## ⚠️ Dataset Notice
+## ⚠️ Dataset Note
 
-The dataset is NOT included in this repository due to GitHub file size limitations.
+Dataset is not included due to size limitations.
 
----
-
-## 📦 Dataset Requirements
-
-Dataset must follow **YOLO format**:
-
-```
-project/
-│
-├── train/
-│   ├── images/
-│   ├── labels/
-│
-├── valid/
-│   ├── images/
-│   ├── labels/
-│
-├── test/
-│   ├── images/
-│   ├── labels/
-```
-
----
-
-## 📌 Label Format
-
-Each label file:
+Format required:
 
 ```
 <class_id> <x_center> <y_center> <width> <height>
 ```
 
-- Values must be normalized (0–1)
-- Class IDs:
-  - 0 → drowning_person
-  - 1 → person
-
 ---
 
-## ⚙️ Installation
+## 💡 Future Scope
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/your-username/beach-safety-ai.git
-cd beach-safety-ai
-```
-
-### 2. Install Dependencies
-```bash
-pip install ultralytics torch numpy
-```
-
----
-
-## 🧹 Step 1: Clean Labels
-
-```bash
-python clean_label.py
-```
-
-Removes:
-- Invalid class IDs
-- Incorrect bounding boxes
-- Corrupted label entries
-
----
-
-## 🏋️ Step 2: Train Model
-
-```bash
-python train_model.py
-```
-
-### Training Configuration
-
-- Model: YOLOv8x
-- Epochs: 300
-- Image Size: 960
-- Batch Size: 2
-- Optimizer: AdamW
-- GPU support enabled
-
-### Data Augmentation
-
-- Rotation, scaling, translation
-- Mosaic & MixUp
-- Horizontal & vertical flips
-- HSV color augmentation
-
-📦 Output Model:
-```
-runs/detect/beach_safety_90plus_final/weights/best.pt
-```
-
----
-
-## 🧪 Step 3: Validate Model
-
-### Basic Validation
-```bash
-python validate_model.py
-```
-
-### Advanced Validation
-```bash
-python validation_final.py
-```
-
-### Metrics Computed
-
-- mAP@0.5
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-- False Positive Rate (FPR)
-- False Negative Rate (FNR)
-- Inference Speed (FPS)
-
----
-
-## 🔍 Step 4: Run Prediction
-
-```bash
-python predict_model.py
-```
-
-Output:
-```
-runs/detect/predict/
-```
-
----
-
-## 📈 Performance (Sample)
-
-```
-mAP@0.5:     ~0.90+
-Precision:   ~0.88+
-Recall:      ~0.89+
-F1 Score:    ~0.88+
-FPS:         ~20–40 (GPU)
-```
-
----
-
-## ⚡ Hardware Support
-
-- GPU (Recommended): Faster training & inference
-- CPU: Supported but slower
-
----
-
-## 🚫 .gitignore (Recommended)
-
-```
-train/
-valid/
-test/
-runs/
-*.pt
-*.cache
-.DS_Store
-Thumbs.db
-```
-
----
-
-## 💡 Future Improvements
-
-- Real-time CCTV integration
-- Alarm / SMS alert system
-- Edge deployment (Raspberry Pi / Jetson Nano)
-- Web dashboard monitoring
-- Multi-person risk tracking
+- Integration with AELIS system  
+- Thermal camera-based night detection  
+- Real-time alert system (SMS / alarm)  
+- CCTV live monitoring  
+- Edge deployment (Jetson / Raspberry Pi)  
 
 ---
 
 ## 🎯 Applications
 
-- Beach safety monitoring
-- Swimming pool surveillance
-- Water rescue systems
-- Smart city safety solutions
+- Beach safety monitoring  
+- Swimming pools  
+- Water parks  
+- Rescue systems  
 
 ---
 
 ## 👨‍💻 Author
 
 Soumith Gajula  
-AI & Computer Vision Enthusiast  
+B.Tech CSE, NIIT University  
+
+---
+
+## 🎤 Interview Tip (VERY IMPORTANT)
+
+If asked:
+
+👉 *“Did you implement AELIS and thermal cameras?”*
+
+You should say:
+
+> “No, I implemented the YOLO-based drowning detection system. AELIS and thermal cameras are part of my research-based system design and future work.”
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
-
----
-
-## ⭐ Support
-
-If you found this project useful:
-
-- ⭐ Star the repository  
-- 🍴 Fork it  
-- 📢 Share it  
-
----
-
-## 💬 Interview / Viva Key Point
-
-This project uses a **CNN-based deep learning model (YOLOv8)** for real-time object detection, trained with custom data to identify drowning situations with high accuracy, enabling intelligent safety monitoring systems.
+MIT License
