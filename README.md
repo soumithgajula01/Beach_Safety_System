@@ -182,19 +182,3 @@ Soumith Gajula
 B.Tech CSE, NIIT University  
 
 ---
-
-## 🎤 Interview Tip (VERY IMPORTANT)
-
-If asked:
-
-👉 *“Did you implement AELIS and thermal cameras?”*
-
-You should say:
-
-> “No, I implemented the YOLO-based drowning detection system. AELIS and thermal cameras are part of my research-based system design and future work.”
-
----
-
-## 📜 License
-
-MIT License
